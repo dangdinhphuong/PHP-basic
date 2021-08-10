@@ -1,0 +1,22 @@
+Bài 1: Một chuỗi ký tự S được cho là hợp lệ nếu thoả mãn 1 trong 2 điều kiện sau:
+Không chứa chuỗi: “book” nhưng chứa chuỗi “restaurant”
+Không chứa chuỗi: “restaurant” nhưng chứa chuỗi “book”
+Viết 1 function (checkValidString) trả về giá trị (boolean): 
+True nếu  chuỗi hợp lệ
+False nếu chuỗi không hợp lệ
+
+
+Bài 2: Sử dụng hàm bạn vừa viết để kiểm tra 2 chuỗi:
+file1.txt = “Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled 
+it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.”
+file2.txt = “There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.”
+Nếu chuỗi sai in ra “Chuỗi  không hợp lệ”.
+Nếu chuỗi đúng hãy in ra câu “Chuỗi  hợp lệ. chuỗi bao gồm n câu.”, trong đó n là số câu của chuỗi (mỗi câu sẽ kết thúc bằng dấu chấm) 
+
+Phụ lục:
+Yêu cầu tạo 1 file exercise1.php để thực hiện yêu cầu trên. File trên sẽ được add vào repo đã được tạo ở bài tập về git, với:
+tên branch: feature-tên_bạn-php-basic (VD: feature-sonnt-php-basic)
+message commit: PHP basic
+Tuân thủ coding convention như sau https://docs.google.com/document/d/14VfbgEO_yH5TfEK23PQxFMbjluqF4Wdt0BeaAbKpaYI/edit
+file1.txt, file2.txt là 2 file đã được thêm với nội dung tùy ý ở bài tập về git. Ở bài này cần được sửa nội dung như đã mô tả ở bài 2. Ở đây cần đọc file file1.txt và file2.txt để làm đầu vào cho function đã viết.
+Tạo merge request từ branch trên vào branch master. Gửi link merge request cho người chấm bài.
