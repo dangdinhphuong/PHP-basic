@@ -1,30 +1,46 @@
 <?php
 class ExerciseString
 {
-    public $Check1 = "checkValidSlogan";
-    public $Check2 = "restaurant";
+    public $check1 = "checkValidSlogan";
+    public $check2 = "restaurant";
     public $readFile = "file.txt";
-    public $WriteFile = "lidn.txt";
-    public $Content = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut doloribus asperiores beatae explicabo delectus itaque odio hic, natus soluta debitis.";
-    public function readFile()
+    public $writeFile = "result_file.txt";
+    public function readFile($fileName)
     {
-        return file_get_contents($this->readFile);
+        return file_get_contents($fileName);
     }
-    public function checkValidString($String,$Contain)
-    {
-        if (strstr($String, $Contain) == true) {
-            echo "Chuỗi  hợp lệ, chuỗi bao gồm " . count(explode('.', $String)) . " câu.";
-            file_put_contents($this->WriteFile, $this->Content);
 
+    public function checkValidString($string, $contain)
+    {
+        if (strstr($string, $contain) == true) {
             return true;
         } else {
-            echo "Chuỗi  không hợp lệ";
-
             return false;
+        }
+    }
+    public function getValidString($string, $check1 = "", $check2 = "")
+    {
+        if ($check1 != "") {
+            if ($this->checkValidString($string, $check1) == true) {
+                echo "Hợp lệ";
+                file_put_contents($this->writeFile, $check1);
+            } else {
+                echo "Chuỗi không hợp lệ";
+            }
+        }
+        if ($check2 != "") {
+            if ($this->checkValidString($string, $check2) == true) {
+                echo "Chuỗi  hợp lệ, chuỗi bao gồm " . count(explode('.', $string)) . " câu.";
+                file_put_contents($this->writeFile, $check1);
+            } else {
+                echo "Chuỗi không hợp lệ";
+            }
         }
     }
 }
 
 $getExerciseString = new ExerciseString();
 // PracticeOop1
-$getExerciseString->checkValidString($getExerciseString->readFile(),$getExerciseString->Check1);
+$getExerciseString->getValidString($getExerciseString->readFile($getExerciseString->readFile), $getExerciseString->check1);//check1
+echo"<br>";
+$getExerciseString->getValidString($getExerciseString->readFile($getExerciseString->readFile), "", $getExerciseString->check2);//check2

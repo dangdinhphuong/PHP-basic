@@ -18,11 +18,6 @@ check2 là chuỗi “x”. Chuỗi có n câu. (nếu x là true: “Hợp lệ
 
 
 
-
-
-
-
-
 Bài 3: 
 Viết một abtract class tên 'Country' làm lớp cha,  có:
 Thuộc tính (protected) $slogan
