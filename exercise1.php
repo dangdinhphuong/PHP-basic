@@ -1,35 +1,29 @@
 
   <?php
-    class CheckValid
+    $readFile1 = "file1.txt";
+    $readFile2 = "file2.txt";
+    function checkValidString($getString, $notContain, $contain)
     {
-        public  $readFile = "file2.txt";
-        function checkValidString($getString, $notContain, $contain)
-        {
-            if (strpos($getString, $notContain) == "" && strpos($getString, $contain) != "") {
-
-                return true;
-            } else {
-
-                return false;
-            }
+        if (strstr($getString, $notContain) == false && strstr($getString, $contain) == true) {
+            echo "Chuỗi  hợp lệ";
+            return true;
+        } else {
+            echo "Chuỗi  không hợp lệ";
+            return false;
         }
     }
-    class CheckFile extends CheckValid
+
+
+    function getCheckfile($getString, $notContain, $contain)
     {
-          function setCheckfile(){
-              return $this->readFile;
-          }
-        function getCheckfile($getString, $notContain, $contain)
-        {
-            if ($this->checkValidString($getString, $notContain, $contain) == true) {
-                echo "Chuỗi  hợp lệ. chuỗi bao gồm " . count(explode('.', file_get_contents($this->readFile))) . " câu.";
-            } else {
-                echo "Chuỗi  không hợp lệ";
-            }
+        if (checkValidString($getString, $notContain, $contain) == true) {
+            echo "Chuỗi  hợp lệ. chuỗi bao gồm " . count(explode('.', $getString)) . " câu.";
+        } else {
+            echo "Chuỗi  không hợp lệ";
         }
     }
-    $checkValid = new CheckValid();
-    $checkFile = new CheckFile();
-    $checkFile->getCheckfile($checkFile->setCheckfile(), "add", "hiện");
-    //    $checkValid->checkValidString("thực hiện yêu cầu trên", "add", "hiện");
+
+
+    getCheckfile(file_get_contents($readFile1), "restaurant", "Lorem");
+    checkValidString(file_get_contents($readFile1), "restaurant", "Lorem");
     ?>
