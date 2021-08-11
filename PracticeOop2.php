@@ -1,19 +1,19 @@
 <?php
 trait Active
 {
-    public function getClas()
+    public function getClass()
     {
         return get_class($this);
     }
 }
 interface Boss
 {
-    //public function checkValidSlogan();
+    public function checkValidSlogan();
 }
 class Country
 {
     protected $slogan = "";
-    public function sayHello($Hello = "Hello")
+    public function Hello($Hello)
     {
         echo $Hello;
     }
@@ -23,7 +23,11 @@ class VietnamCountry extends Country implements Boss
     use Active;
     public function defindYourSelf()
     {
-        return $this->getClas();
+        return $this->getClass();
+    }
+    public function sayHello($Hello='Xin chao')
+    {
+        return $this->Hello($Hello);
     }
     public function setSlogan($slogan = "")
     {
@@ -43,9 +47,13 @@ class VietnamCountry extends Country implements Boss
 class EnglandCountry extends Country implements Boss
 {
     use Active;
+    public function sayHello($Hello='Hello')
+    {
+        return $this->Hello($Hello);
+    }
     public function defindYourSelf()
     {
-        return $this->getClas();
+        return $this->getClass();
     }
     public function setSlogan($slogan = "")
     {
@@ -72,7 +80,7 @@ $vietnamCountry->setSlogan('Vietnam is the easternmost country on the Indochina 
 
 $englandCountry->sayHello(); // Hello
 echo "<br>";
-$vietnamCountry->sayHello("Xin chao"); // Xin chao
+$vietnamCountry->sayHello(); // Xin chao
 echo "<br>";
 
 var_dump($englandCountry->checkValidSlogan()); // true
