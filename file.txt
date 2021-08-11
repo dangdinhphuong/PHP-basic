@@ -1,22 +1,81 @@
-Bài 1: Một chuỗi ký tự S được cho là hợp lệ nếu thoả mãn 1 trong 2 điều kiện sau:
-Không chứa chuỗi: “book” nhưng chứa chuỗi “restaurant”
-Không chứa chuỗi: “restaurant” nhưng chứa chuỗi “book”
-Viết 1 function (checkValidString) trả về giá trị (boolean): 
-True nếu  chuỗi hợp lệ
-False nếu chuỗi không hợp lệ
+Bài 1: Tạo 1 class, thuộc tính và các phương thức sau:
+Class: ExerciseString
+Các thuộc tính:
+Check1
+Check2
+Phương thức
+readFile: đọc nội dung các file .txt
+checkValidString: kiểm tra chuỗi có hợp lệ hay không (function ở bài php basic)
+writeFile: ghi nội dung vào result_file .txt
+
+Bài 2: Sử dụng các thuộc tính và phương thức đã viết để thực hiện các yêu cầu sau (yêu cầu cần viết ở ngoài class):
+Khởi tạo 1 đối tượng của ExerciseString, tên đối tượng là $object1.
+Sử dụng phương thức readFile để đọc file1.txt. Sau đó, dùng phương thức checkValidString để kiểm tra nội dung vừa đọc được. Giá trị sau kiểm tra gán cho thuộc tính $check1.
+Sử dụng phương thức readFile để đọc file2.txt. Sau đó, dùng phương thức checkValidString để kiểm tra nội dung vừa đọc được. Giá trị sau kiểm tra gán cho thuộc tính $check2.
+Dựa vào 2 giá trị $check1 và $check2 ghi vào file result_file.txt với format như sau, lưu ý là xoá nội dung file result_file.txt trước khi ghi.
+check1 là chuỗi “x” (nếu x là true: “Hợp lệ”, false: “Không hợp lệ”)
+check2 là chuỗi “x”. Chuỗi có n câu. (nếu x là true: “Hợp lệ”, false: “Không hợp lệ”. n là số câu của đoạn văn)
 
 
-Bài 2: Sử dụng hàm bạn vừa viết để kiểm tra 2 chuỗi:
-file1.txt = “Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled 
-it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.”
-file2.txt = “There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.”
-Nếu chuỗi sai in ra “Chuỗi  không hợp lệ”.
-Nếu chuỗi đúng hãy in ra câu “Chuỗi  hợp lệ. chuỗi bao gồm n câu.”, trong đó n là số câu của chuỗi (mỗi câu sẽ kết thúc bằng dấu chấm) 
+
+
+
+
+
+
+Bài 3: 
+Viết một abtract class tên 'Country' làm lớp cha,  có:
+Thuộc tính (protected) $slogan
+Hàm sayHello()
+ 
+Viết một interface tên 'Boss' có giao diện cho hàm checkValidSlogan()
+ 
+Viết 2 class 'EnglandCountry' và 'VietnamCountry' được kế thừa từ class 'Country', và implement interface Boss.
+ 
+Định nghĩa các hàm sao cho đoạn code sau chạy đúng
+EnglandCountry yêu cầu chuỗi $slogan có chứa 'england' hoặc 'english'
+VietnamCountry yêu cầu chuỗi $slogan có chứa đoạn 'vietnam' và 'hust'
+ 
+
+
+
+---------------------------------------------------
+<?php 
+
+$englandCountry = new EnglandCountry();
+$vietnamCountry = new VietnamCountry();
+
+$englandCountry->setSlogan('England is a country that is part of the United Kingdom. It shares land borders with Wales to the west and Scotland to the north. The Irish Sea lies west of England and the Celtic Sea to the southwest.');
+
+$vietnamCountry->setSlogan('Vietnam is the easternmost country on the Indochina Peninsula. With an estimated 94.6 million inhabitants as of 2016, it is the 15th most populous country in the world.');
+
+$englandCountry->sayHello(); // Hello
+echo "<br>";
+$vietnamCountry->sayHello(); // Xin chao
+
+echo "<br>";
+
+var_dump($englandCountry->checkValidSlogan()); // true
+echo "<br>";
+var_dump($vietnamCountry->checkValidSlogan()); // false
+
+--------------------------------------------------------------------
+Bonus
+// Tạo Trait có tên 'Active'
+// Sử dụng để in ra tên class sau khi chạy các lệnh sau (gợi ý: dùng get_class())
+
+echo 'I am ' . $englandCountry->defindYourSelf(); 
+ echo "<br>";
+ echo 'I am ' . $vietnamCountry->defindYourSelf(); 
+
 
 Phụ lục:
-Yêu cầu tạo 1 file exercise1.php để thực hiện yêu cầu trên. File trên sẽ được add vào repo đã được tạo ở bài tập về git, với:
-tên branch: feature-tên_bạn-php-basic (VD: feature-sonnt-php-basic)
-message commit: PHP basic
-Tuân thủ coding convention như sau https://docs.google.com/document/d/14VfbgEO_yH5TfEK23PQxFMbjluqF4Wdt0BeaAbKpaYI/edit
-file1.txt, file2.txt là 2 file đã được thêm với nội dung tùy ý ở bài tập về git. Ở bài này cần được sửa nội dung như đã mô tả ở bài 2. Ở đây cần đọc file file1.txt và file2.txt để làm đầu vào cho function đã viết.
+Tạo file PracticeOop1.php để thực hiện yêu cầu Bài 1 và 2
+Tạo file PracticeOop2.php để thực hiện yêu cầu Bài 3
+
+
+ Các File trên sẽ được add vào repo đã được tạo ở bài tập về git, với:
+tên branch: feature-tên_bạn-php-oop (VD: feature-sonnt-php-oop)
+message commit: PHP oop
+Tuân thủ coding convention
 Tạo merge request từ branch trên vào branch master. Gửi link merge request cho người chấm bài.
