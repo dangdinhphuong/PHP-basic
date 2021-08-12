@@ -8,9 +8,9 @@ trait Active
 }
 interface Boss
 {
-    public function checkValidSlogan();
+    public function checkValidSlogan(); 
 }
-class Country
+abstract class Country
 {
     protected $slogan = "";
     public function Hello($Hello)
@@ -74,6 +74,7 @@ class EnglandCountry extends Country implements Boss
 
 $englandCountry = new EnglandCountry();
 $vietnamCountry = new VietnamCountry();
+
 $englandCountry->setSlogan('England is a country that is part of the United Kingdom. It shares land borders with Wales to the west and Scotland to the north. The Irish Sea lies west of England and the Celtic Sea to the southwest.');
 
 $vietnamCountry->setSlogan('Vietnam is the easternmost country on the Indochina Peninsula. With an estimated 94.6 million inhabitants as of 2016, it is the 15th most populous country in the world.');
