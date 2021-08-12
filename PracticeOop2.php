@@ -13,9 +13,9 @@ interface Boss
 abstract class Country
 {
     protected $slogan = "";
-    public function Hello($Hello)
+    public function Hello($hello)
     {
-        echo $Hello;
+        echo $hello;
     }
 }
 class VietnamCountry extends Country implements Boss
@@ -25,9 +25,9 @@ class VietnamCountry extends Country implements Boss
     {
         return $this->getClass();
     }
-    public function sayHello($Hello='Xin chao')
+    public function sayHello($hello='Xin chao')
     {
-        return $this->Hello($Hello);
+        return $this->Hello($hello);
     }
     public function setSlogan($slogan = "")
     {
@@ -47,9 +47,9 @@ class VietnamCountry extends Country implements Boss
 class EnglandCountry extends Country implements Boss
 {
     use Active;
-    public function sayHello($Hello='Hello')
+    public function sayHello($hello='Hello')
     {
-        return $this->Hello($Hello);
+        return $this->Hello($hello);
     }
     public function defindYourSelf()
     {
