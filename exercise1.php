@@ -4,12 +4,8 @@ $readFile2 = "file2.txt";
 function checkValidString($getString, $notContain, $contain)
 {
     if (strstr($getString, $notContain) == false && strstr($getString, $contain) == true) {
-        echo "Chuỗi  hợp lệ";
-
         return true;
     } else {
-        echo "Chuỗi  không hợp lệ";
-
         return false;
     }
 }
@@ -17,13 +13,18 @@ function checkValidString($getString, $notContain, $contain)
 function getCheckfile($getString, $notContain, $contain)
 {
     if (checkValidString($getString, $notContain, $contain) == true) {
-        echo "Chuỗi  hợp lệ. chuỗi bao gồm " . count(explode('.', $getString)) . " câu.";
+        echo "Chuỗi  hợp lệ chuỗi bao gồm " . count(explode('.', $getString)) . " câu.";
     } else {
         echo "Chuỗi  không hợp lệ";
     }
 }
 
 // lesson 1
-checkValidString(file_get_contents($readFile1), "restaurant", "Lorem");
+ var_dump(checkValidString(file_get_contents($readFile1), "book", "restaurant"));// false
+echo"<br>";
+var_dump(checkValidString(file_get_contents($readFile1),"restaurant", "book"));// true
+echo"<br>";
 // lesson 2
-getCheckfile(file_get_contents($readFile1), "restaurant", "Lorem");
+getCheckfile(file_get_contents($readFile1),"book", "restaurant");//Chuỗi không hợp lệ
+echo"<br>";
+getCheckfile(file_get_contents($readFile1), "restaurant", "book");//Chuỗi hợp lệ chuỗi bao gồm 5 câu.
