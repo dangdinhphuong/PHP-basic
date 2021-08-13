@@ -1,8 +1,7 @@
 <?php
 class ExerciseString
 {
-    public $check1 = "";
-    public $check2 = "";
+    public $check1,$check2, $stringCount  = "";
     public $readFile = "file.txt";
     public $writeFile = "result_file.txt";
     public function readFile($fileName)
@@ -10,49 +9,49 @@ class ExerciseString
         return file_get_contents($fileName);
     }
 
-    public function checkValidString($string, $contain)
+    function checkValidString($getString, $notContain, $contain)
     {
-        if (strstr($string, $contain) == true) {
+        if (strstr($getString, $notContain) == false && strstr($getString, $contain) == true) {
             return true;
         } else {
             return false;
         }
     }
 
-    public function setText($fileName, $check = "")
+    public function setText($fileName, $notContain, $contain,  $showNumberOfSentence = true)
     {
-        $string = $this->readFile($fileName);
 
-        return $this->checkValidString($string, $check);
+        $string = $this->readFile($fileName);
+        $isValid = $this->checkValidString($string, $notContain, $contain);
+        if ($showNumberOfSentence) {
+            $this->stringCount = count(explode('.', $string)) . " là số câu của đoạn văn";
+        }
+        if ($isValid) {
+            return " hợp lệ ". $this->stringCount;
+        }
+        return " không hợp lệ " . $this->stringCount;
     }
 
-    public function getText($fileName, $check = "")
+    function writeFile($notContain, $contain)
     {
-        $this->check1 = $this->setText($fileName, $check);
-        $this->check2 = $this->setText($fileName, $check);
-        if ($this->check1 == true) {
-            file_put_contents($this->writeFile, ""); //delete file content
-            file_put_contents($this->writeFile, $this->check1); //write file content
-        } else {
-            $this->check1 = "Chuỗi không hợp lệ";
-            file_put_contents($this->writeFile, ""); //delete file content
-            file_put_contents($this->writeFile, $this->check1); //write file content
-        }
-        if ($this->check2 == true) {
-            $this->check2 = "Hợp lệ";
-            file_put_contents($this->writeFile, ""); //delete file content
-            file_put_contents($this->writeFile, $this->check2); //write file content
-        } else {
-            $this->check2 = "Chuỗi không hợp lệ bao gồm " . count(explode('.', $this->readFile($fileName))) . " câu.";
-            file_put_contents($this->writeFile, ""); //delete file content
-            file_put_contents($this->writeFile, $this->check2); //write file content
-        }
+        $this->check1 = "check1 la chuoi" . $this->setText("file1.txt", $notContain, $contain,false);
+        $this->check2 = "check2 la chuoi" . $this->setText("file2.txt", $notContain, $contain);
+        file_put_contents($this->writeFile, ""); //delete file content
+        file_put_contents($this->writeFile, [$this->check1, $this->check2]); //write file content
+        echo "<br>";
+        echo $this->check1;
+        echo "<br>";
+        echo $this->check2;
     }
 }
 
-$getExerciseString = new ExerciseString();
 
-// PracticeOop1
-$getExerciseString->getText("file1.txt", "Lorem1"); //check1
-// echo "<br>";
-$getExerciseString->getText("file2.txt", "Lorem"); //check1
+
+
+
+
+// PracticeOop1. count(explode('.', $getString)) .
+$getExerciseString = new ExerciseString();
+$getExerciseString->writeFile("book", "Lorem");
+// check1 la chuoi không hợp lệ
+// check2 la chuoi không hợp lệ 3 là số câu của đoạn văn
