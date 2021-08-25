@@ -1,0 +1,28 @@
+version: '3'
+services:
+    web:
+        image: nginx:latest
+        ports:
+            - "80:80"
+        volumes:
+            - ./nginx.conf:/etc/nginx/conf.d/nginx.conf
+            - ./app:/app
+    php:
+        build:
+            context: .
+            dockerfile: PHP.Dockerfile
+        volumes:
+            - ./app:/app
+    db:
+      platform: linux/x86_64
+      image: mysql:5.7
+      container_name: mysql-db
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: sampleDB
+        MYSQL_USER: sampleUser
+        MYSQL_PASSWORD: root
+      ports:
+        - 3306:3306
+volumes:
+    mysqldata: {}
