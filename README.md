@@ -18,4 +18,4 @@
 
 ## Run project
 - After successful connection, we access the link path
-- **[we access the link](http://127.0.0.1/)**
+- **[we access the link](http://127.0.0.1/public)**
